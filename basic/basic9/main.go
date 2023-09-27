@@ -52,9 +52,71 @@ func main() {
 	//res := int(a) + b
 
 	// *************************************
+	// 字符串拼接
+	//a := "abc"cc
+	//b := "bcd"
+	//res := a + b
+	//fmt.Println(res) // => abcbcd
 
-	a := "abc"
-	b := "bcd"
-	res := a + b
-	fmt.Println(res) // => abcbcd
+	// *************************************
+	//a := 1
+	//b := -a
+	//fmt.Println(b) // => -1
+
+	// *************************************
+	//a := "abc"
+	//var b byte = 'd'
+	//res := a + b x 类型不匹配
+
+	// *************************************
+	//var a byte = 'a' // -> uint8 97
+	//var b byte = 'b' // -> uint8 98
+	//
+	//res := a + b
+	//fmt.Println(res) // => 195
+
+	// *************************************
+	//a := 1
+	//b := 2
+	//
+	//res1 := a + b
+	//res2 := a - b
+	//res3 := a * b
+	//res4 := a / b // res4 int => 小数部分丢失
+	//res5 := a % b // 1 / 2 => 0 , 1
+	//
+	//fmt.Println(res1, res2, res3, res4, res5)
+
+	// *************************************
+	//a := "abc"
+	//b := "bcd"
+
+	//res := a - b
+	//res2 := a * b
+	//res3 := a / b
+	//
+	//fmt.Println(res, res2, res3)
+
+	// *************************************
+	// uint8 => 0~255
+	//var a byte = 'a'
+	//var b byte = 'b'
+	//
+	//res := a - b     // 97 - 98 = -1 => 255
+	//fmt.Println(res) // => 255
+
+	// *************************************
+	//var a = 0
+	//var b = 0
+	//var c = 1
+	// panic: runtime error: integer divide by zero
+	//fmt.Println(a / b)
+	//fmt.Println(c / a)
+
+	// *************************************
+	// +Inf
+	a := 1.0
+	b := 0.0
+
+	fmt.Println(a / b) // => +Inf
 }

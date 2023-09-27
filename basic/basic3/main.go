@@ -98,14 +98,14 @@ func main() {
 	//	e
 	//)
 
-	//const (
-	//	a = 0
-	//	b
-	//	c = iota
-	//	d
-	//	e
-	//)
-	//fmt.Println(a, b, c, d, e)
+	const (
+		a = 0
+		b
+		c = iota
+		d
+		e
+	)
+	fmt.Println(a, b, c, d, e)
 
 	//const (
 	//	a = iota
