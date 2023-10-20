@@ -81,13 +81,13 @@ func main() {
 	fmt.Printf("%c", ch1)
 	fmt.Println(ch1)
 
-	//var ch1 rune = 25105
-	//fmt.Printf("%c", ch1)
-	//fmt.Println(ch1)
+	// var ch1 rune = 25105
+	// fmt.Printf("%c", ch1)
+	// fmt.Println(ch1)
 
-	//var ch2 = '爱'
-	//fmt.Printf("%c", ch2)
-	//fmt.Println(ch2)
+	// var ch2 = '爱'
+	// fmt.Printf("%c", ch2)
+	// fmt.Println(ch2)
 
 	var ch2 = 23323
 	fmt.Printf("%c", ch2)
