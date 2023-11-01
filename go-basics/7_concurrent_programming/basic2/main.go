@@ -64,3 +64,28 @@ func minus() {
 		fmt.Println("minus: " + strconv.Itoa(int(a)))
 	}
 }
+
+/**
+  Mutex =>
+		state: 互斥锁状态
+				Locked
+				Woken: 唤醒的
+				Starving: 饥饿的
+				WaiterShift：等待的数量
+
+		sema: 信号量、信号锁 => 最大并发数量 => 初始为0
+				uint8 => semaRoot
+										=> 对应的锁对象 Mutex
+                    => 平衡树 => 正在等待运行得 Goroutine
+										=> 等待的数量
+
+	sema: 数量（并发）=>
+				1. 当一个 Goroutine 获取到锁， sema - 1
+				2. 当一个 Goroutine 释放锁了，sema + 1
+				3. 当 sema 为 0, 携程系统就是休眠的状态
+				（Goroutine 都会进入到等待队列）
+				4. 只要有一个 Goroutine 释放了锁，sema 就会有一个并发量
+				那么，系统就会从等待的队列里唤醒一个 Goroutine
+
+
+*/
