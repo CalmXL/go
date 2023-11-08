@@ -72,17 +72,123 @@ func main() {
 	    参数1： map 类型的数据
 			参数2： 容量可选
 	*/
+	// myInfo := make(map[string]string, 3)
+	//
+	// myInfo["name"] = "xiaoyesensen"
+	// myInfo["age"] = "18"
+	//
+	// fmt.Println(myInfo)
+	// fmt.Println(len(myInfo)) // => 2
+	//
+	// myInfo["height"] = "176"
+	// // 从超过容量的 key 开始，追加需要扩容
+	// myInfo["hobby"] = "music"
+	//
+	// fmt.Println(myInfo)
+
+	// -------------------------------------------
+	// 重复 key
+	// myInfo := map[string]string{
+	// 	"name": "小野森森",
+	// 	"age":  "18",
+	// }
+	// // 修改操作
+	// // key 在集合当中是唯一的
+	// myInfo["age"] = "20"
+	// fmt.Println(myInfo)
+
+	// -------------------------------------------
+	// 读取、修改
+	// stringMap := make(map[string]string, 1)
+	// stringMap["name"] = "xiaotyesensen"
+	// stringMap["name"] = "superxiaotye"
+	//
+	// fmt.Println(stringMap["name"])
+
+	// intMap := make(map[int]string, 3)
+	//
+	// intMap[1001] = "张三"
+	// intMap[1002] = "李四"
+	// intMap[1003] = "王五"
+	//
+	// fmt.Println(intMap)
+
+	// boolMap := make(map[bool]int, 2)
+	//
+	// boolMap[true] = 1
+	// boolMap[false] = 0
+	//
+	// fmt.Println(boolMap)
+
+	// mySlice := []string{"张三", "李四", "王五"}
+	//
+	// myMap := make(map[string][]string, 2)
+	//
+	// myMap["classOne"] = mySlice
+	//
+	// fmt.Println(myMap)
+
+	// myMap := make(map[string]string, 3)
+	//
+	// myMap["name"] = "xiaoyesensen"
+	// myMap["age"] = "18"
+	// myMap["height"] = "176"
+	// fmt.Println(myMap["weight"]) // => 返回空字符串
+	//
+	// _, exist := myMap["weight"]
+	// fmt.Println(exist) // '' false
+	//
+	// _, exist2 := myMap["height"]
+	// fmt.Println(exist2) // true
+
+	// myMap := make(map[int]int, 3)
+	//
+	// myMap[0] = 1
+	// myMap[1] = 2
+	// myMap[2] = 3
+	// fmt.Println(myMap[3]) // => 0
+
+	// ----------------------------------------------------
+	// 写入
+
+	// var mySlice [] string
+	// 只有声明没有初始化
+	// 初始化 var myMap map[int]int {}
+	// var myMap map[int]int
+	// assignment to entry in nil map
+	// 没有进行初始化
+	// myMap[0] = 1
+	// fmt.Println(myMap)
+
+	// stringMap := make(map[string]string, 1)
+	// stringMap["name"] = "xiaoyesensen"
+
+	// ----------------------------------------------------
+	// 删除 key
+	// stringMap := make(map[string]string, 2)
+	// stringMap["name"] = "xiaoyesensen"
+	// stringMap["age"] = "18"
+	//
+	// fmt.Println(stringMap)
+	//
+	// // delete 内置方法  =>   stringMap.delete(element)
+	// delete(stringMap, "age")
+	// fmt.Println(stringMap)
+	//
+	// // 删除不存在的 key, 不会有任何操作和报错
+	// delete(stringMap, "height")
+
+	// -----------------------------------------------------
+
 	myInfo := make(map[string]string, 3)
-
-	myInfo["name"] = "xiaoyesensen"
-	myInfo["age"] = "18"
-
-	fmt.Println(myInfo)
-	fmt.Println(len(myInfo)) // => 2
-
-	myInfo["height"] = "176"
-	// 从超过容量的 key 开始，追加需要扩容
+	myInfo["name"] = "xulei"
+	myInfo["age"] = "27"
+	myInfo["height"] = "178"
 	myInfo["hobby"] = "music"
 
-	fmt.Println(myInfo)
+	// for range 针对于 map 的 key 的枚举是无序的
+	// 枚举的过程是无序且顺序随机的
+	for key, value := range myInfo {
+		fmt.Println(key, value)
+	}
 }
