@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 /**
   同步和异步机制
 
@@ -8,6 +12,12 @@ package main
 	回调函数的作用：
 		把函数任务分步进行处理
 		函数执行期间，一部分任务交给回调函数进行处理
+
+		把函数内部一部分特定的任务交给回调函数来完成
+		函数本身并不关心回调函数内部的逻辑
+		1. 函数值需要把一些逻辑结果通过参数传递给回调
+		2. 函数只决定在函数内部什么地方执行回调函数
+		3. 函数本身只关心回调执行完成所返回的结果
 */
 
 // func step1(a int, b int) int {
@@ -30,11 +40,49 @@ package main
 // 	cb()
 // }
 
-func test(strFn func(str string) string) string {
-	str := "abc"
-	finalStr := strFn(str)
+// func test(strFn func(str string) string) string {
+// 	str := "abc"
+// 	finalStr := strFn(str)
+//
+// 	return finalStr
+// }
 
-	return finalStr
+// func test(str string) string {
+// 	return stringOperater(str)
+// }
+
+func compute(
+	a int,
+	b int,
+	method string,
+	cb func(
+		a int,
+		b int,
+		sign string,
+		res int,
+	) string,
+) string {
+	_sign := ""
+	_res := 0
+
+	switch method {
+	case "PLUS":
+		_sign = "+"
+		_res = a + b
+	case "MINUS":
+		_sign = "-"
+		_res = a - b
+	case "MULTIPLY":
+		_sign = "*"
+		_res = a * b
+	case "DIVISION":
+		_sign = "/"
+		_res = a / b
+	default:
+		panic("error method")
+	}
+
+	return cb(a, b, _sign, _res)
 }
 
 func main() {
@@ -66,4 +114,30 @@ func main() {
 		step3(res1)
 		step4(res2)
 	*/
+
+	// res := test(func(str string) string {
+	// 	return strings.Replace(str, "", "-", -1)
+	// })
+	//
+	// fmt.Println(res)
+
+	// res := test("abc")
+	// fmt.Println(res)
+
+	res := compute(1, 2, "MULTIPLY", func(
+		a int,
+		b int,
+		sign string,
+		res int,
+	) string {
+		result := fmt.Sprintf(`%d %s %d = %d`, a, sign, b, res)
+		// fmt.Println(result)
+		return result
+	})
+
+	fmt.Println(res)
 }
+
+// func stringOperater(str string) string {
+// 	return strings.Replace(str, "", "-", -1)
+// }
