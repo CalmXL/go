@@ -1,11 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"sync"
-	"time"
-)
-
 /**
   Go 的并发哲学
 	不要通过共享内存进行通信 (互斥锁、读写锁)
@@ -57,7 +51,6 @@ func main() {
 	// 		time.Sleep(1 * time.Second)
 	// 	}
 	// }()
-	//
 	// time.Sleep(5 * time.Second)
 	// for v := range c {
 	// 	fmt.Printf("Received: %d\r\n", v)
@@ -224,92 +217,92 @@ func main() {
 		通过 Channel 来传输这些信息，不同的 Channel 传递对应的信息
 	  接收方将对应对应的信息放入对应 slice
 	*/
-	var wg sync.WaitGroup
-	type Student struct {
-		id   int
-		name string
-		age  int
-		pass bool
-	}
-
-	type Teacher struct {
-		id      int
-		name    string
-		age     int
-		subject string
-	}
-
-	stSlice := make([]Student, 0)
-	thSlice := make([]Teacher, 0)
-
-	stChan := make(chan Student)
-	thChan := make(chan Teacher)
-
-	wg.Add(1)
-
-	go func() {
-
-		defer close(stChan)
-		defer close(thChan)
-		defer wg.Done()
-
-		stChan <- Student{
-			id:   1,
-			name: "张三",
-			age:  18,
-			pass: false,
-		}
-
-		thChan <- Teacher{
-			id:      1,
-			name:    "li Teacher",
-			age:     34,
-			subject: "数学",
-		}
-
-		stChan <- Student{
-			id:   1,
-			name: "李四",
-			age:  18,
-			pass: false,
-		}
-
-		thChan <- Teacher{
-			id:      1,
-			name:    "wang Teacher",
-			age:     44,
-			subject: "英语",
-		}
-	}()
-
-loop:
-	for {
-		select {
-		// 有数据可以接收
-		// 如果多个 chan 都有数据可以接收，则随机进入到某个 case 中
-		case st, ok := <-stChan:
-			if !ok {
-				break loop
-			}
-			stSlice = append(stSlice, st)
-		case th, ok := <-thChan:
-			if !ok {
-				break loop
-			}
-			thSlice = append(thSlice, th)
-		}
-
-	}
-
-	time.Sleep(5 * time.Second)
-
-	for _, v := range stSlice {
-		fmt.Println(v)
-	}
-
-	for _, v := range thSlice {
-		fmt.Println(v)
-	}
-
-	wg.Wait()
+	// 	var wg sync.WaitGroup
+	// 	type Student struct {
+	// 		id   int
+	// 		name string
+	// 		age  int
+	// 		pass bool
+	// 	}
+	//
+	// 	type Teacher struct {
+	// 		id      int
+	// 		name    string
+	// 		age     int
+	// 		subject string
+	// 	}
+	//
+	// 	stSlice := make([]Student, 0)
+	// 	thSlice := make([]Teacher, 0)
+	//
+	// 	stChan := make(chan Student)
+	// 	thChan := make(chan Teacher)
+	//
+	// 	wg.Add(1)
+	//
+	// 	go func() {
+	//
+	// 		defer close(stChan)
+	// 		defer close(thChan)
+	// 		defer wg.Done()
+	//
+	// 		stChan <- Student{
+	// 			id:   1,
+	// 			name: "张三",
+	// 			age:  18,
+	// 			pass: false,
+	// 		}
+	//
+	// 		thChan <- Teacher{
+	// 			id:      1,
+	// 			name:    "li Teacher",
+	// 			age:     34,
+	// 			subject: "数学",
+	// 		}
+	//
+	// 		stChan <- Student{
+	// 			id:   1,
+	// 			name: "李四",
+	// 			age:  18,
+	// 			pass: false,
+	// 		}
+	//
+	// 		thChan <- Teacher{
+	// 			id:      1,
+	// 			name:    "wang Teacher",
+	// 			age:     44,
+	// 			subject: "英语",
+	// 		}
+	// 	}()
+	//
+	// loop:
+	// 	for {
+	// 		select {
+	// 		// 有数据可以接收
+	// 		// 如果多个 chan 都有数据可以接收，则随机进入到某个 case 中
+	// 		case st, ok := <-stChan:
+	// 			if !ok {
+	// 				break loop
+	// 			}
+	// 			stSlice = append(stSlice, st)
+	// 		case th, ok := <-thChan:
+	// 			if !ok {
+	// 				break loop
+	// 			}
+	// 			thSlice = append(thSlice, th)
+	// 		}
+	//
+	// 	}
+	//
+	// 	time.Sleep(5 * time.Second)
+	//
+	// 	for _, v := range stSlice {
+	// 		fmt.Println(v)
+	// 	}
+	//
+	// 	for _, v := range thSlice {
+	// 		fmt.Println(v)
+	// 	}
+	//
+	// 	wg.Wait()
 }
