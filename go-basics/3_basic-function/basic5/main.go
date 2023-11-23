@@ -89,12 +89,15 @@ func readFile() {
 	defer catchPainc()
 	file, err := os.Open("./_basic-function/basic5/desc.txt")
 	defer func(file *os.File) {
+		fmt.Println(92)
 		if err := file.Close(); err != nil {
 			panic("关闭文件失败")
 		}
 	}(file)
 
+	fmt.Println(97, err)
 	if err != nil {
+		fmt.Println(99, err)
 		panic("打开文件失败")
 	}
 

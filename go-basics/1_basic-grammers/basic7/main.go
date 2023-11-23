@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	// var a int8 = 123
@@ -77,15 +79,15 @@ func main() {
 	/*
 		reflect.TypeOf()
 	*/
-	// a := true
-	// b := 123
-	// c := "abc"
-	// d := 3.14
+	//a := true
+	//b := 123
+	//c := "abc"
+	//d := 3.14
 	//
-	// aType := reflect.TypeOf(a)
-	// bType := reflect.TypeOf(b)
-	// cType := reflect.TypeOf(c)
-	// dType := reflect.TypeOf(d)
+	//aType := reflect.TypeOf(a)
+	//bType := reflect.TypeOf(b)
+	//cType := reflect.TypeOf(c)
+	//dType := reflect.TypeOf(d)
 	//
 	// aaType := reflect.ValueOf(a).Kind()
 	// bbType := reflect.ValueOf(b).Kind()
