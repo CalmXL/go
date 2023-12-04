@@ -1,10 +1,10 @@
 package main
 
 type SchedList struct {
-	list []Schedule
+	list []*Schedule
 }
 
-func (sl *SchedList) addTodo(todo Schedule) bool {
+func (sl *SchedList) addTodo(todo *Schedule) bool {
 	for _, el := range sl.list {
 		if el.id == todo.id {
 			return false
@@ -18,7 +18,7 @@ func (sl *SchedList) addTodo(todo Schedule) bool {
 func (sl *SchedList) removeTodo(id int) (element Schedule) {
 	for i, el := range sl.list {
 		if el.id == id {
-			element = el
+			element = *el
 			sl.list = append(sl.list[:i], sl.list[i+1:]...)
 		}
 	}
@@ -47,11 +47,11 @@ func (sl *SchedList) setContent(id int, content string) bool {
 func (sl *SchedList) getTodo(id int) (element Schedule) {
 	for _, el := range sl.list {
 		if el.id == id {
-			element = el
+			element = *el
 		}
 	}
 	return element
 }
-func (sl *SchedList) getList() []Schedule {
+func (sl *SchedList) getList() []*Schedule {
 	return sl.list
 }
