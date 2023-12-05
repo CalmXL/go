@@ -54,7 +54,7 @@ func main() {
 		1. 这样的写法是一种需要 Go 进行类型推断的写法
 		2. 赋值 nil, nil 不是一种数据类型，所以没办法进行准确推断的类型判断
 		3. nil 作为某些类型的零值，不止一种，该推断成哪一种零值，不确定
-		4. 赋值 nil 的俩种条件:
+		4. 赋值 nil 的两种条件:
 			a. 显示定义变量的类型
 			b. 类型必须符合 nil 类该类型零值的条件
 	*/
@@ -105,7 +105,7 @@ func main() {
 	// if a == nil {
 	//
 	// }
-	type Adress struct {
+	type Address struct {
 		province string
 		city     string
 	}
@@ -115,13 +115,13 @@ func main() {
 		age  int
 		// hobbies []int
 		// hobbies map[string]string
-		address Adress
+		address Address
 	}
 
 	s1 := Student{
 		name: "张三",
 		age:  18,
-		address: Adress{
+		address: Address{
 			province: "黑龙江",
 			city:     "齐齐哈尔",
 		},
@@ -130,7 +130,7 @@ func main() {
 	s2 := Student{
 		name: "张三",
 		age:  18,
-		address: Adress{
+		address: Address{
 			province: "黑龙江",
 			city:     "齐齐哈尔",
 		},
