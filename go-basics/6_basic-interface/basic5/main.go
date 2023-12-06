@@ -32,6 +32,24 @@ package main
 // 		panic("类型不支持")
 // 	}
 // }
+// func plus(a, b interface{}) interface{} {
+// 	switch a.(type) {
+// 	case int:
+// 		_a, _ := a.(int)
+// 		_b, _ := b.(int)
+// 		return _a + _b
+// 	case float64:
+// 		_a, _ := a.(float64)
+// 		_b, _ := b.(float64)
+// 		return _a + _b
+// 	case string:
+// 		_a, _ := a.(string)
+// 		_b, _ := b.(string)
+// 		return _a + _b
+// 	default:
+// 		panic("类型不支持")
+// 	}
+// }
 
 type Todo struct {
 	id        int
@@ -68,6 +86,4 @@ func main() {
 	// fmt.Println(res3)
 	// fmt.Println(res4)
 
-	// todoList1 := make([]Todo, 0)
-	// todoList2 := make([]TodoMap, 0)
 }
