@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/rpc"
+	"go-basics/8_micro-service/basic2/6_new-gorpc/proxy/client"
+	"go-basics/8_micro-service/basic2/6_new-gorpc/proxy/service"
 )
 
 type RequestBody struct {
@@ -25,16 +26,21 @@ type ResponseBody struct {
 
 func main() {
 
-	args := RequestBody{
+	args := service.RequestBody{
 		A: 300,
 		B: 200,
 	}
 
-	reply := &ResponseBody{}
-	dial, _ := rpc.Dial("tcp", ":8080")
+	reply := &service.ResponseBody{}
+	// dial, _ := rpc.Dial("tcp", ":8080")
 
-	_ = dial.Call("ComputeService.Minus", args, reply)
-	// compute.Minus(args, reply)
+	computeService := client.NewComputeServiceClient("tcp", ":8080")
+	err := computeService.Minus(args, reply)
+	if err != nil {
+		return
+	}
+	// _ = dial.Call("ComputeService.Minus", args, reply)
+	// // compute.Minus(args, reply)
 	fmt.Println(reply)
 
 }
