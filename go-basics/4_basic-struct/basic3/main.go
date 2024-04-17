@@ -47,7 +47,7 @@ func main() {
 	//
 	// type LogisticsInfo struct {
 	// 	orderId    string
-	// 	producName string
+	// 	productName string
 	// 	address    struct {
 	// 		province string
 	// 		city     string

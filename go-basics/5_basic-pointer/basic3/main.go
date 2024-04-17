@@ -45,7 +45,7 @@ func main() {
 	// fmt.Printf("%T", a)
 	// // => *int
 	// fmt.Printf("%T", nil)
-	// // => <nil> 没有类型 unTyped
+	// => <nil> 没有类型 unTyped
 
 	/*
 		如果没有显式类型，则无法分配 nil
@@ -67,12 +67,12 @@ func main() {
 	// 	return nil
 	// }
 
-	// test := func () []int {
+	// test := func() []int {
 	// 	return nil
 	// }
 
 	// ---------------------------------------------------------
-	// nil 不是 Go 语言的关键字(不可以使用)
+	// nil 不是 Go 语言的关键字(不建议使用)
 	// nil := 1
 	// fmt.Println(nil) // => 1
 

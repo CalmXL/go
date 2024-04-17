@@ -79,6 +79,7 @@ func main() {
 
 // 给自定义类型提供方法
 // 给自定义类型的所有数据提供方法
+
 type ComputeSlice []int
 
 func (cs ComputeSlice) compute(method string) int {
