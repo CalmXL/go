@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="module">
+    import $ from 'jquery';
+    // $.get('http://localhost:3000/info/2').then(res => {
+    //     console.log(res);
+    // })
+
+    // $.get('http://localhost:3000/user').then(res => {
+    //     console.log(res);
+    // })
+
+    // $.ajax({
+    //     url: 'http://localhost:3000/user',
+    //     method: 'post',
+    //     data: {
+    //         id: 1
+    //     },
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+
+    // $.ajax({
+    //     url: 'http://localhost:3000/user',
+    //     method: 'get',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+
+    // $.ajax({
+    //     url: "http://localhost:8080/login",
+    //     method: "POST",
+    //     data: {
+    //         username: "xiaoyesensen",
+    //         password: "1234567"
+    //     }
+    // }).then(res => {
+    //     console.log(res);
+    // })
+    //
+    $.get("http://localhost:3000/phone/list").then(res => {
+        console.log("phone/list: ", res)
+    })
+
+    $.get("http://localhost:3000/phone/1").then(res => {
+        console.log("phone/id: ", res)
+    })
+
+    $.get("http://localhost:3000/user/list").then(res => {
+        console.log("user/list: ",res)
+    })
+
+    $.get("http://localhost:3000/user/3").then(res => {
+        console.log("user/id: ", res)
+    })
+
+</script>
+</body>
+</html>

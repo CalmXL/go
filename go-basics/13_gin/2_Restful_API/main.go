@@ -49,9 +49,39 @@ var infos = []InfoBody{
 	},
 }
 
+/**
+	Access-Control-Allow-Origin
+  同源策略
+	浏览器的策略 => 浏览器对于资源请求的一种策略
+	http://localhost:3000/info/2 源
+
+	协议: http
+	子域: www
+	端口: 80
+
+	这三个东西必须一致才是同源，才不会受到同源策略的影响
+	同源策略引起的是跨域的问题
+*/
+
+func Cors() func(*gin.Context) {
+	return func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATH,OPTIONS,HEAD")
+		c.Header("Access-Control-Allow-Headers", "Content-Type")
+
+		if c.Request.Method == "OPTIONS" {
+			c.JSON(http.StatusOK, nil)
+			c.Abort()
+			return
+		}
+
+		c.Next()
+	}
+}
+
 func main() {
 	r := gin.Default()
-
+	r.Use(Cors())
 	// GET 查询数据
 	// http://localhost:8080?id=2
 	r.GET("/info", func(c *gin.Context) {
@@ -179,7 +209,7 @@ func main() {
 	})
 
 	r.HEAD("/head", func(c *gin.Context) {
-		c.Header("Content-Type", "application/json")
+		c.Header("Content-Type", "applicatio n/json")
 		c.JSON(http.StatusOK, nil)
 	})
 
