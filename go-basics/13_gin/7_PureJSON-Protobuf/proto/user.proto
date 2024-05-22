@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "/;proto";
+
+message User {
+  int32 uid = 1;
+  string name = 2;
+  int32 age = 3;
+  string gender = 4;
+  repeated string languages = 5;
+}

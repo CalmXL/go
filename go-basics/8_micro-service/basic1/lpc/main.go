@@ -6,7 +6,7 @@ import "fmt"
   LPC Local Procedure Call 本地过程调用
 
 	多线程程序调用
-	多进程程序 调用
+	多进程程序调用
 */
 
 func main() {

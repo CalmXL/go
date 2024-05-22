@@ -44,7 +44,7 @@ import (
 
 	go 中：
 		抛出异常：painc
-		捕获异常：recover`
+		捕获异常：recover
     最终逻辑：defer
 
 	error:

@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"sync"
-	"time"
 )
 
 // goroutine
@@ -30,6 +29,7 @@ func main() {
 	// test1()
 	// // 阻塞
 	// test2()
+	// // 阻塞
 	// test3()
 	//
 	// for i := 0; i < 100; i++ {
@@ -52,6 +52,10 @@ func main() {
 		// 	fmt.Println(t)
 		// }()
 
+		/**
+		  在 waitGroup 中添加一个 Goroutine 的计数器
+		  计数为0, 所有 Goroutine 全部被释放掉
+		*/
 		// 同步等待组
 		waitGroup.Add(1)
 
@@ -65,7 +69,9 @@ func main() {
 		}(i)
 	}
 
-	time.Sleep(time.Second)
+	// time.Sleep(time.Second)
+	// 当 Goroutine 阻塞 main 退出，直到 Goroutine计数为0，解开阻塞
+	waitGroup.Wait()
 }
 
 func test0() {

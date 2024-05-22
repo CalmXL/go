@@ -1,0 +1,28 @@
+syntax = "proto3";
+// 当前目录，使用 proto 作为包名
+option go_package = "./;proto";
+
+enum CalcType {
+  // proto3 中的第一个枚举值必须为 0
+  PLUS = 0;
+  MINUS = 1;
+  MULTIPLY = 2;
+  DIVIDE = 3;
+}
+
+message CalcRequest {
+  int32  num1 = 1;
+  int32  num2 = 2;
+  CalcType type = 3;
+}
+
+message CalcResponse {
+  int32  num1 = 1;
+  int32  num2 = 2;
+  CalcType type = 3;
+  int32 result = 4;
+}
+
+service Calculator {
+  rpc Calculate (CalcRequest) returns (CalcResponse);
+}

@@ -24,8 +24,7 @@ func main() {
 		requestBody := &RequestBody{
 			Type: "PLUS",
 		}
-		fmt.Println(r.Body)
-		fmt.Println(requestBody)
+
 		_ = json.NewDecoder(r.Body).Decode(requestBody)
 		fmt.Println(requestBody)
 

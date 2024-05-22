@@ -2,25 +2,26 @@ package main
 
 import "fmt"
 
-//func test1(a int) {
+// func test1(a int) {
 //	a = 100
-//}
+// }
 //
-//func test2(s []int) {
+// func test2(s []int) {
 //	s[0] = 100
 //	fmt.Println(s)
+
 //	fmt.Printf("%p\r\n", s)
-//}
+// }
 //
-//func test3(m map[int]int) {
+// func test3(m map[int]int) {
 //	m[1] = 100
 //	fmt.Println(m)
 //	fmt.Printf("%p\r\n", m)
-//}
+// }
 //
-//func test4(f func()) {
+// func test4(f func()) {
 //	fmt.Printf("%p\r\n", f)
-//}
+// }
 
 type Todo struct {
 	id        int
@@ -67,9 +68,9 @@ func main() {
 	  1. 复制一份数据
 	  2. 将数据传递给函数
 	*/
-	//a := 1
-	//test1(a)
-	//fmt.Println(a)
+	// a := 1
+	// test1(a)
+	// fmt.Println(a)
 
 	// -----------------------------
 	// slice map channel 都不是引用传递， 都是值传递
@@ -77,24 +78,24 @@ func main() {
 	  在 Go 语言当中，虽然传递的时候没有显示的传递指针，
 		但是在 Go 底层，会复制一份值的指针，传递给函数
 	*/
-	//s := []int{1, 2, 3}
-	//test2(s)
-	//fmt.Println(s)
-	//fmt.Printf("%p\r\n", s)
+	// s := []int{1, 2, 3}
+	// test2(s)
+	// fmt.Println(s)
+	// fmt.Printf("%p\r\n", s)
 
-	//m := map[int]int{
+	// m := map[int]int{
 	//	1: 1,
 	//	2: 2,
-	//}
+	// }
 	//
-	//test3(m)
-	//fmt.Println(m)
+	// test3(m)
+	// fmt.Println(m)
 	//
-	//fmt.Printf("%p\r\n", m)
+	// fmt.Printf("%p\r\n", m)
 
-	//f := func() {}
-	//test4(f)
-	//fmt.Printf("%p\r\n", f)
+	// f := func() {}
+	// test4(f)
+	// fmt.Printf("%p\r\n", f)
 
 	todo := Todo{
 		id:        1,

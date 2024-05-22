@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /**
 赋值运算
 	= 赋值符号
@@ -40,39 +38,40 @@ import "fmt"
 	!= 不想等
 */
 
-/**
+/*
+*
 逻辑运算
-	所有逻辑运算都会返回布尔值，真假条件
 
-	&& 与运算
+		所有逻辑运算都会返回布尔值，真假条件
 
-		a && b => true => a: true && b: true  => 两个同时为 true
- 					 => false => 如果有一个为 false 或者 两个都为 false
+		&& 与运算
 
-		总结：a 和 b 条件的返回值都为真，那么与运算返回值返回真
-				 有一个或者多个为假，与运算返回假
+			a && b => true => a: true && b: true  => 两个同时为 true
+	 					 => false => 如果有一个为 false 或者 两个都为 false
 
-		a && b: 如果 a 为 false 停止 => 返回假
+			总结：a 和 b 条件的返回值都为真，那么与运算返回值返回真
+					 有一个或者多个为假，与运算返回假
+
+			a && b: 如果 a 为 false 停止 => 返回假
 
 
-	|| 或运算
-		a || b => true => 有一个或两个为 true
-  				 => false => 两个都为false
+		|| 或运算
+			a || b => true => 有一个或两个为 true
+	  				 => false => 两个都为false
 
-		总结：a 和 b 的条件返回值有一个或者多个为真，或运算返回为真
-  			 全部都为假，或运算返回为假
-		a || b: a => true => 停止 => 返回真
+			总结：a 和 b 的条件返回值有一个或者多个为真，或运算返回为真
+	  			 全部都为假，或运算返回为假
+			a || b: a => true => 停止 => 返回真
 
-	总结：
-		与运算中，有一个为假，就返回假
-						全部为真，就返回真
-		或运算中，有一个为真，就返回真
-						全部为假，就返回假
+		总结：
+			与运算中，有一个为假，就返回假
+							全部为真，就返回真
+			或运算中，有一个为真，就返回真
+							全部为假，就返回假
 
- 	!运算
-		a => true
-		!a => false
-
+	 	!运算
+			a => true
+			!a => false
 */
 func main() {
 	// a := 1
@@ -140,20 +139,20 @@ func main() {
 
 	// ------------------------------------------
 
-	a := 1
-	b := 2
-	c := 3
-
-	fmt.Println(a > 1 && b > 1)  // => false
-	fmt.Println(a >= 1 && b > 1) // => true
-
-	fmt.Println(a >= 1 && b > 2 && c >= 3) // => false
-
-	fmt.Println(a >= 1 && b >= 2 && c > 3) // => false
-
-	fmt.Println(a >= 1 || b > 2 || c > 3) // => true
-
-	fmt.Println(a > 1 || b >= 2 || c > 3) // => true
+	// a := 1
+	// b := 2
+	// c := 3
+	//
+	// fmt.Println(a > 1 && b > 1)  // => false
+	// fmt.Println(a >= 1 && b > 1) // => true
+	//
+	// fmt.Println(a >= 1 && b > 2 && c >= 3) // => false
+	//
+	// fmt.Println(a >= 1 && b >= 2 && c > 3) // => false
+	//
+	// fmt.Println(a >= 1 || b > 2 || c > 3) // => true
+	//
+	// fmt.Println(a > 1 || b >= 2 || c > 3) // => true
 
 	/**
 	a > 1 => false
@@ -161,7 +160,7 @@ func main() {
 	c > 3 => false
 	=> false
 	*/
-	fmt.Println(a > 1 || b > 2 || c > 3) // => false
+	// fmt.Println(a > 1 || b > 2 || c > 3) // => false
 
 	/**
 	a >= 1 => true
@@ -169,15 +168,15 @@ func main() {
 	c >= 3 => true
 	=> true
 	*/
-	fmt.Println(a >= 1 && c >= 3 || b > 2) // => true
-
-	fmt.Println(b > 2 && c >= 3 || a >= 1) // => false
-
-	fmt.Println(b >= 2 && (a > 1 || c > 3)) // => false
-
-	flag := false
-	flag = true
-
-	fmt.Println(!flag) // => false
+	// fmt.Println(a >= 1 && c >= 3 || b > 2) // => true
+	//
+	// fmt.Println(b > 2 && c >= 3 || a >= 1) // => false
+	//
+	// fmt.Println(b >= 2 && (a > 1 || c > 3)) // => false
+	//
+	// flag := false
+	// flag = true
+	//
+	// fmt.Println(!flag) // => false
 
 }

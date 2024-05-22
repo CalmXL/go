@@ -1,0 +1,15 @@
+syntax = "proto3";
+option go_package = "/";
+
+/**
+    {
+       "id": 1,
+       "name": "xiaoyesensen",
+       "is_marriage": true
+    }
+ */
+message Person {
+  int32 id = 1; // 这不是赋值，这是字段的编号，用于 Proto Compiler 进行字段编译
+  string name = 2;
+  bool isMarriage = 3;
+}

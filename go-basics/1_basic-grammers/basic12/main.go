@@ -18,16 +18,16 @@ func main() {
 	// 字母串是由字符组成的
 	// [ I \s l o v e \s y o u ! ]
 	// 字母或者空格 => byte 或者 rune
-	// a := "I Love you!"
+	a := "I Love you!"
 	// length := len(a)
 	// fmt.Println(length)
 	//
 	// // 方括号代表的是切片
 	// // 我要把 a 字符串转换成每个元素 byte 类型
-	// aBytes := []byte(a)
+	aBytes := []byte(a)
 	// // 每个元素都是一个 ASCII 码
-	// fmt.Println(aBytes)      // [73 32 76 111 118 101 32 121 111 117 33]
-	// fmt.Println(len(aBytes)) // => 11
+	fmt.Println(aBytes)      // [73 32 76 111 118 101 32 121 111 117 33]
+	fmt.Println(len(aBytes)) // => 11
 
 	// a := "我爱你"
 	// // byte => uint8 => 0 ~ 255
@@ -64,27 +64,27 @@ func main() {
 	// fmt.Println("15\t16\t17\t18\t19\t20\t21")
 
 	// -------------------------------------------------------
-	a := "Hello"
-	b := "Hello"
-	c := "world"
-	d := "Hola"
-	e := "Helle"
+	// a := "Hello"
+	// b := "Hello"
+	// c := "world"
+	// d := "Hola"
+	// e := "Helle"
 
 	// 相等与不等的成立条件是字符串顺序与每个字母都相等
-	res := a == b
-	res1 := a != c
-	fmt.Println(res, res1) // => true true
-
-	// 比较大小时，字符串依次进行 ASCII 码对比
-	res2 := a > c
-	fmt.Println(res2) // => false
-
-	res3 := a > b
-	fmt.Println(res3) // => false
-
-	res4 := a < d
-	fmt.Println(res4) // => true
-
-	res5 := a > e
-	fmt.Println(res5) // => true
+	// res := a == b
+	// res1 := a != c
+	// fmt.Println(res, res1) // => true true
+	//
+	// // 比较大小时，字符串依次进行 ASCII 码对比
+	// res2 := a > c
+	// fmt.Println(res2) // => false
+	//
+	// res3 := a > b
+	// fmt.Println(res3) // => false
+	//
+	// res4 := a < d
+	// fmt.Println(res4) // => true
+	//
+	// res5 := a > e
+	// fmt.Println(res5) // => true
 }
