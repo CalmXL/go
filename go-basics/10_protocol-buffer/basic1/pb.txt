@@ -1,0 +1,57 @@
+
+JSON
+
+1. 静态数据
+2. 所有字符都要进行二进制转换后传输
+
+{
+    "name": "xiaoyesensen",
+    "age": 37,
+    "is_marriage": true
+}
+
+JSON.stringify() | JSON.parse()
+
+// -------------------------------------
+
+XML
+1. 静态数据
+2. 体积很大
+
+<name>xiaoyesensen</name>
+<age>37</age>
+<is-marriage>true </is-marriage>
+
+------------------------
+Protocol Buffer - Protobuf
+
+IDL Language (interface Description Language)
+                接口描述语言
+
+.proto
+syntax="proto3";
+option go_package="./;proto"
+
+message MyInfo {
+    string name = 1;
+    int32 age = 2;
+    bool isMarriage = 3;
+}
+
+myInfo.proto => myInfo.pb.go
+
+type MyInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name       string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age        int32  `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	IsMarriage bool   `protobuf:"varint,3,opt,name=isMarriage,proto3" json:"isMarriage,omitempty"`
+}
+
+myInfo := MyInfo {
+    Name: "xiaoyesensen",
+    Age: 38,
+    IsMarriage: true
+}
