@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option go_package="./;proto";
+
+message PageInfo {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message UserList {
+  int32 userCount = 1;
+  repeated UserInfo users = 2;
+}
+
+message UserInfo {
+  int32 id = 1;
+  string mobileNumber = 2;
+  string nickName = 3;
+  string password = 4;
+  int32 gender = 5;
+  int32 role = 6;
+}
+
+message PasswordVerify {
+  int32 id = 1;
+  string rawPassword = 2;
+}
+
+message PasswordVeryifyPass {
+  bool IsPass = 1;
+}
+
+service User {
+  rpc GetUserList (PageInfo) returns (UserList);
+  rpc GetUser (UserInfo) returns (UserInfo);
+  rpc CreateUser (UserInfo) returns (UserInfo);
+  rpc UpdateUser (UserInfo) returns (UserInfo);
+  rpc VerifyPassword (PasswordVerify) returns (PasswordVeryifyPass);
+  rpc UpdateMobileNumber (UserInfo) returns (UserInfo);
+  rpc UpdatePassword (UserInfo) returns (UserInfo);
+}
