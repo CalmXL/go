@@ -4,12 +4,13 @@ import "fmt"
 
 /*
   什么是接口(interface)？
-		中国的插头 => 中国的电源
-		英国的插头 => 英国的电源
+		中国的插头 => 中国的电源（接口）
+		英国的插头 => 英国的电源 (接口)
 	接口就是一系列规范方法实现的标准
 
-  // 设计方法由规范提供
+  // 设计方法由规范决定
 	func add (a int, b int) int
+
   // 编码只需要按照规范来书写就行了
 	func add () {}
 
@@ -32,9 +33,12 @@ import "fmt"
 type MyInt int
 type MyFloat float64
 type PlusT interface {
-	// ~ 是包含衍生类型
+	// ~ 是包含衍生类型(相关的自定义类型的含义)
 	~int | string | float32 | ~float64 | uint8
 }
+
+// func plus[T int | string | float64 | float32 | uint8](a, b T) T {
+// }
 
 func plus[T PlusT](a, b T) T {
 	return a + b
@@ -87,7 +91,7 @@ func doSth(animal Duck) {
 }
 
 func main() {
-	// any => interface{} 可以接受任意类型
+	// any => interface{} => 可以接受任意类型
 	// studentMap := map[string]any{
 	// 	"name": "张三",
 	// 	"age":  18,
