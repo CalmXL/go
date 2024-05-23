@@ -121,5 +121,16 @@ Name
     tag length  value => TLV 编码
     T   L       V
 
-    tag  value  field + tag length value +  tag  value  field
+    
 
+    tag field + tag length +  tag value
+
+    Name
+
+    Tag => filedNumber << 3 | wireType
+        => 1 << 3
+        =>  00000001 << 3 => 00001000
+        => 00001000 | 00000010
+        => 00001010
+    
+    00001010 00001100

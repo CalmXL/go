@@ -30,8 +30,7 @@ message PasswordVeryifyPass {
   bool IsPass = 1;
 }
 
-service User {
-  rpc GetUserList (PageInfo) returns (UserList);
+service User {  rpc GetUserList (PageInfo) returns (UserList);
   rpc GetUser (UserInfo) returns (UserInfo);
   rpc CreateUser (UserInfo) returns (UserInfo);
   rpc UpdateUser (UserInfo) returns (UserInfo);

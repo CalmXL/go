@@ -8,7 +8,7 @@ import (
 	"github.com/anaskhan96/go-password-encoder"
 )
 
-var opts = &password.Options{10, 10000, 30, md5.New}
+var opts = &password.Options{SaltLen: 10, Iterations: 10000, KeyLen: 30, HashFunction: md5.New}
 
 func GeneratePassword(rawPassword string) string {
 	salt, encodedPwd := password.Encode(rawPassword, opts)
@@ -24,15 +24,3 @@ func VerifyPassword(rawPassword string, encodePassword string) bool {
 
 	return isPass
 }
-
-// func main() {
-// 	// Using the default options
-// 	salt, encodedPwd := password.Encode("generic password", nil)
-// 	check := password.Verify("generic password", salt, encodedPwd, nil)
-// 	fmt.Println(check) // true
-
-// 	// Using custom options
-// 	salt, encodedPwd = password.Encode("generic password", options)
-// 	check = password.Verify("generic password", salt, encodedPwd, options)
-// 	fmt.Println(check) // true
-// }
