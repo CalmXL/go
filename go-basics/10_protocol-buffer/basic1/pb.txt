@@ -23,12 +23,12 @@ XML
 <is-marriage>true </is-marriage>
 
 ------------------------
-Protocol Buffer - Protobuf
+Protocol Buffer - Protobuf 是一门语言
 
-IDL Language (interface Description Language)
+全程: IDL Language (interface Description Language)
                 接口描述语言
 
-.proto
+.proto文件
 syntax="proto3";
 option go_package="./;proto"
 
@@ -55,3 +55,71 @@ myInfo := MyInfo {
     Age: 38,
     IsMarriage: true
 }
+
+myInfo.Age = 37
+
+// --------------------------------------------
+fieldNumber => 字段编号
+
+通信传输数据的过程中 -> 字段编号 -> x ->  字段名
+
+1 => 00000000 00000000 00000000 0000001
+
+.proto => server / client => 维护这个文件
+           .go / .js => 字段名和字段编号的映射
+
+varint => Variable-Width integer 可变长编码
+
+Age
+    fieldNumber => 2
+                => 00000000 00000000 00000000 00000010
+                => 00000010
+
+    value => 38
+          => 00000000 00000000 00000000 00100110
+          => 00100110
+
+    => filedNumber + value     fieldNumber     value
+    => 00000010    + 00100110  00000010    +   00100110
+    => sign bit | msb most significant bit
+    => 1 0100110 + 0 0000010 + 1 0100110 + 0 0000010
+
+    => 每一个字节二进制的首位是标志位 sign bit
+    => 只要是标志位是1 => 当前一组 keyValue 还有下一个字节
+    => 只要标志位是 0 => 当前这一个字节是 fieldNumber 结束
+
+    => 1 0100110 + 0 0000010
+
+
+// -----------------------------------------
+isMarriage
+    fieldNumber => 3
+                => 00000000 00000000 00000000 00000011
+                => 0 0000011
+
+    value       => true => int32 => 1
+                => 00000000 00000000 00000000 00000011
+                => 1 0000001
+
+    => 1 0000001 + 0 0000001
+
+如果是 -1
+=> 11111111 11111111 11111111 11111111
+Zigzag 编码
+
+sint
+
+负数: 2 * abs(负数) - 1 =>
+      2 * abs(-1) - 1 => 1
+
+正数: 2 * abs(正数)
+      2 * abs(1) = 2
+
+------------------------------------
+
+Name
+    tag length  value => TLV 编码
+    T   L       V
+
+    tag  value  field + tag length value +  tag  value  field
+
