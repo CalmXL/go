@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// protoc -I . --go_out=plugins=grpc:.
+// -I . => --proto_path="./"
+
+// --go_out => 输出位置
+
+// test.pb.go 放到 ./ => package proto
+//option go_package = "./;proto";
+
+// test.pb.go 放到 ./ => package test
+//option go_package = "./;test";
+
+// package proto
+//option go_package = "/;proto";
+
+
+// test.pb.go => ./proto => package proto
+//option go_package = "/proto";
+
+
+// 不行
+//option go_package = ".proto";
+
+//option go_package = "protobuf/test/v1";
+
+
+option go_package = "../protobuf/test/v1";

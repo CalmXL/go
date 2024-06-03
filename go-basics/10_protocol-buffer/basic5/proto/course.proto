@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "/;proto";
+
+message CourseInfo {
+  int32 cid = 1;
+  string cname = 2;
+  string teacher = 3;
+}
+
+message CourseRequest {
+  // Compute language
+  string type = 1;
+
+}
+
+message CourseResponse {
+  int32 code = 1;
+  string msg = 2;
+  repeated CourseInfo data = 3;
+  map<string, string> extra = 4;
+}
+
+service Course {
+  rpc GetCourseList (CourseRequest) returns (CourseResponse);
+}
