@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "/;proto";
+
+enum Course {
+  GO = 0;
+  JAVA  = 1;
+  RUST = 2;
+}
+
+message UserInfoRequest {
+  string token = 1;
+}
+
+message UserInfo {
+  int64 uid = 1;
+  string username = 2;
+  repeated Course courseList = 3;
+}
+
+message UserInfoResponse {
+  int32 code = 1;
+  string msg = 2;
+  UserInfo data = 3;
+}
+
+service User {
+  rpc getUserInfo (UserInfoRequest) returns (UserInfoResponse);
+}

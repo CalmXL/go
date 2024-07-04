@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "/;proto";
+
+message StudentRequest {
+  int64 sid = 1;
+}
+
+/**
+   var course = ?
+   如果 ? 是固定的一些值, 这些值可以成为一个集合
+   ？ 就可以是这个集合中的任意一个值
+   这个集合就是枚举
+ */
+
+// protoc -I . student.proto --go_out=plugins=grpc:. && ls *.pb.go | xargs -n1 -IX bash -c 'sed s/,omitempty// X > X.tmp && mv X{.tmp,}'
+// 可以消除编译后的 omitempty
+
+// 枚举
+enum Course {
+  GO = 0;
+  JAVA = 1;
+  RUST = 2;
+}
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+}
+
+//message Scores {
+//  int32 interview = 1;
+//  int32 written = 2;
+//}
+
+//message StudentResponse {
+//  int64 sid = 1;
+//  string name = 2;
+//  int32 age = 3;
+//  Gender gender = 4;
+//  Course course = 5;
+//  Scores scores = 6;
+//  google.protobuf.Timestamp joinTime = 7;
+//}
+
+message StudentResponse {
+  message Scores {
+    int32 interview = 1;
+    int32 written = 2;
+  }
+    int64 sid = 1;
+    string name = 2;
+    int32 age = 3;
+    Gender gender = 4;
+    Course course = 5;
+    Scores scores = 6;
+    google.protobuf.Timestamp joinTime = 7;
+
+    oneof subject {
+      int32 Chemistry = 8;
+      int32 Geography = 9;
+    }
+}
+
+message Test {
+  // protobuf
+  StudentResponse.Scores scores = 1;
+
+  // 在 go
+//  StudentResponse_Scores
+}
+
+
+
+service Student {
+  rpc getStudent (StudentRequest) returns(StudentResponse);
+}
+
+
+
