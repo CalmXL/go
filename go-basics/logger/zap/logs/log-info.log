@@ -1,0 +1,11 @@
+{"level":"INFO","msg":"这是一个普通日志"}
+{"level":"ERROR","msg":"这是一个错误日志"}
+{"level":"INFO","msg":"这是一个普通日志"}
+{"level":"ERROR","msg":"这是一个错误日志"}
+{"level":"PANIC","msg":"这时一个错误日志"}
+{"level":"INFO","msg":"这是一个普通日志"}
+{"level":"ERROR","msg":"这是一个错误日志"}
+{"level":"PANIC","msg":"这时一个错误日志"}
+{"level":"WARN","msg":"注意有新的API可以替换：abc -> bcd"}
+{"level":"WARN","msg":"注意有新的API可以替换：abc -> bcd"}
+{"level":"FATAL","msg":"failed to fetch url: https://www.baidu.com"}
