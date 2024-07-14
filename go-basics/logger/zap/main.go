@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"go.uber.org/zap"
-	"log"
 )
 
 /*
@@ -56,22 +56,22 @@ func main() {
 	*/
 
 	// logger, err := zap.NewDevelopment()
-	logger, err := zap.NewProduction()
+	// logger, err := zap.NewProduction()
 	// logger := zap.NewExample()
 
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
-
-	defer logger.Sync() // flushes buffer
-
-	logger.Debug("这是一个调试日志")
-	logger.Info("这是一个普通的日志")
-	logger.Warn("这是一个警告的日志")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// 	return
+	// }
+	//
+	// defer logger.Sync() // flushes buffer
+	//
+	// logger.Debug("这是一个调试日志")
+	// logger.Info("这是一个普通的日志")
+	// logger.Warn("这是一个警告的日志")
 
 	// logger.DPanic("这是一个Dpanic 错误日志")
-	logger.Panic("这是一个 Panic 错误日志")
+	// logger.Panic("这是一个 Panic 错误日志")
 	// logger.Error("这是一个普通错误日志")
 	// logger.Fatal("这是一个严重错误日志")
 
@@ -82,4 +82,77 @@ func main() {
 		Fatal: 严重错误，不会输出错误栈信息，程序会终止
 	*/
 
+	// -----------------------------------------------------
+	// logger, err := zap.NewProduction()
+	//
+	// if err != nil {
+	// 	log.Fatal("logger init failed", zap.Error(err))
+	// 	return
+	// }
+	//
+	// defer logger.Sync()
+
+	// su := logger.Sugar()
+
+	// su.Debugf("这是一个调试日志 %s", "[Debug]")
+	// su.Fatalw("failed to connect to database: ",
+	// 	// 松散性 key value 传参方式且弱类型
+	// 	"IP", "192.168.101.14",
+	// 	"Port", 3006,
+	// )
+
+	// logger.Fatal("Failed to connect to database: ",
+	// 	zap.String("IP", "192.168.101.14"),
+	// 	zap.Int("Port", 3006),
+	// )
+
+	// -------------------------------------------
+	// zap.Hooks
+	// 当一次日志记录完毕后，调用 zap.Hooks 里的回调函数
+	// logger, _ := zap.NewProduction(zap.Hooks(func(entry zapcore.Entry) error {
+	//
+	// 	fmt.Println("entry: ", entry)
+	// 	return nil
+	// }, func(entry zapcore.Entry) error {
+	// 	fmt.Println("entry2: ", entry)
+	// 	return nil
+	// }))
+	//
+	// logger.Info("这是一个普通的日志")
+	// logger.Error("这是一个错误日志")
+
+	// ---------------------------------------------
+
+	rawStream := []byte(`
+		{
+			"level": "debug",
+			"encoding": "json",
+			"outputPaths": ["stdout", "./logs/log-info.log"],
+			"errorOutputPaths": ["stderr", "./logs/log-error.log"],
+			"encoderConfig": {
+				"messageKey": "msg",
+				"levelKey": "level",
+				"levelEncoder": "capital"
+			}
+		}
+	`)
+
+	var config zap.Config
+	if err := json.Unmarshal(rawStream, &config); err != nil {
+		panic(err)
+	}
+
+	logger := zap.Must(config.Build())
+
+	defer logger.Sync()
+	//
+	// logger.Info("这是一个普通日志")
+	// logger.Error("这是一个错误日志")
+	// logger.Panic("这时一个错误日志")
+	// logger.Fatal("这是一个严重的错误日志")
+	//
+	su := logger.Sugar()
+
+	su.Warnf("注意有新的API可以替换：%s", "abc -> bcd")
+	su.Fatalf("failed to fetch url: %s", "https://www.baidu.com")
 }
