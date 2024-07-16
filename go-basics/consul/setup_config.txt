@@ -1,0 +1,26 @@
+1. 安装 docker
+
+2. 通过 docker 安装 consul
+    docker pull hashicorp/consul:latest
+
+3. 通过 docker 运行 consul
+
+    docker run -d -p 8500:8500 -p 8600:8600/udp -p 8300:8300 -p 8301:8301 -p 8302:8302 consul consul agent -dev -client=0.0.0.0
+
+    8500 => 提供服务的列表、注册服务、注销服务、 HTTP 接口可视化工具
+    8600 => 提供 DNS 服务发现
+    8300 => 同一个数据中心 server
+    8301 => 同一个数据中心 client
+    8302 => 不同的数据中心 server
+
+4. 查询 docker 镜像
+    docker images
+
+5. 查询容器
+    docker ps -a
+
+6. 重启consul
+    docker container update --restart=always 50d26
+
+7. 访问可视化界面
+    http://xxx :8500
