@@ -1,0 +1,18 @@
+APP_ENV: development
+BASE_URL: www.baidu.com
+
+database:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: 123456
+  db_name: study
+
+errors:
+  - name: QUERY_FAIL
+    code: 1001
+    msg: Failed to query data
+
+  - name: INVALID_PASSWORD
+    code: 1002
+    msg: Invalid password
