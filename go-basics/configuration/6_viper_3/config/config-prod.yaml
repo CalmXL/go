@@ -1,0 +1,10 @@
+gin:
+  ip: 0.0.0.0
+  port: 3300
+
+db:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: xL1210...
+  db_name: sale_system
