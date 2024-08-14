@@ -1,0 +1,7 @@
+db:
+    dbname: study
+    host: 127.0.0.1
+    password: xL1210...
+    port: 3306
+    type: mysql
+    user: root
