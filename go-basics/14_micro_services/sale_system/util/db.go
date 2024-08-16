@@ -33,8 +33,9 @@ func DBConnect(cfg *config.DBConfig) (*gorm.DB, error) {
 			要支持完整的 UTF-8 编码，您需要将 charset=utf8 更改为 charset=utf8mb4
 			设置时间的位置 Local 为本地系统
 	*/
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local)",
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DBName)
+	fmt.Println(dsn)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		Logger: newLogger,
 		// NameStrategy 命名策略

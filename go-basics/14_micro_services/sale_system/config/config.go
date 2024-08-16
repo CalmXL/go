@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap/zapcore"
 	"log"
-	"sale_system/util"
 )
 
 type GinConfig struct {
@@ -48,9 +47,14 @@ var FileConfig = map[string]string{
 
 var ZapLevel = zapcore.InfoLevel
 
+func GetEnv(env string) bool {
+	viper.AutomaticEnv()
+	return viper.GetBool(env)
+}
+
 func getEnvFile() string {
 	var configFile string
-	isDev := util.GetEnv(FileConfig["ENV"])
+	isDev := GetEnv(FileConfig["ENV"])
 	fmt.Println("isDEV: ", isDev)
 	if isDev {
 		configFile = fmt.Sprintf("./config/%s-dev.yaml", FileConfig["PREFIX"])
@@ -63,7 +67,6 @@ func getEnvFile() string {
 
 func Initialize() (*Config, error) {
 	cfgFilePath := getEnvFile()
-	fmt.Println(cfgFilePath)
 	viper.SetConfigFile(cfgFilePath)
 
 	// viper.SetConfigFile("./config/config.yaml")
@@ -75,14 +78,12 @@ func Initialize() (*Config, error) {
 	})
 
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 
 	if err := viper.Unmarshal(&cfg); err != nil {
-		fmt.Println(22)
 		return nil, err
 	}
-	fmt.Println(72, cfg)
+
 	return cfg, nil
 }

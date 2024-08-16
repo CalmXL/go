@@ -18,7 +18,7 @@ type LoggerConfig struct {
 }
 
 func NewLogger(cfg *config.LogConfig) *zap.Logger {
-	env := GetEnv(config.FileConfig["ENV"])
+	env := config.GetEnv(config.FileConfig["ENV"])
 
 	lumberLogger := &lumberjack.Logger{
 		Filename:   cfg.FilePath,

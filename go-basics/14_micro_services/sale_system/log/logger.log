@@ -1,1 +1,6 @@
 package log
+2024-08-16T08:13:42.813+0800	FATAL	sale_system/main.go:25	Failed to connect to database: invalid URL escape "%!s"
+2024-08-16T08:15:45.724+0800	FATAL	sale_system/main.go:25	Failed to connect to database: invalid URL escape "%!s"
+2024-08-16T08:16:11.226+0800	FATAL	sale_system/main.go:25	Failed to connect to database: unknown time zone Local)
+2024-08-16T08:32:39.667+0800	FATAL	sale_system/main.go:25	Failed to connect to database: unknown time zone Local)
+2024-08-16T08:33:39.283+0800	FATAL	sale_system/main.go:25	Failed to connect to database: unknown time zone Local)

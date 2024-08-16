@@ -1,14 +1,8 @@
 package util
 
 import (
-	"github.com/spf13/viper"
 	"gorm.io/gorm"
 )
-
-func GetEnv(env string) bool {
-	viper.AutomaticEnv()
-	return viper.GetBool(env)
-}
 
 // Paginate 分页
 func Paginate(page, pageSize int32) func(db *gorm.DB) *gorm.DB {
