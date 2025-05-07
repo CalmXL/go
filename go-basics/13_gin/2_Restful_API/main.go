@@ -209,7 +209,7 @@ func main() {
 	})
 
 	r.HEAD("/head", func(c *gin.Context) {
-		c.Header("Content-Type", "applicatio n/json")
+		c.Header("Content-Type", "application/json")
 		c.JSON(http.StatusOK, nil)
 	})
 

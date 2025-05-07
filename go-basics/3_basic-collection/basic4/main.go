@@ -5,7 +5,7 @@ import "fmt"
 /*
 *
  */
-func main() {
+func main1() {
 	/**
 	  1. 访问元素
 	*/
